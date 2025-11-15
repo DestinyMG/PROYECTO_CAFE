@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café Artesanal | Tu mejor experiencia en cada taza</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9f5f0;
+            color: #3e2723;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #8d6e63;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #6d4c41;
+            transform: translateY(-3px);
+        }
+
+        /* Header */
+        header {
+            background-color: #5d4037;
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 20px;
+            margin-bottom: 0;
+            color: white;
+        }
+
+        /* Menú de navegación para móviles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            height: 3px;
+            width: 25px;
+            background: white;
+            margin-bottom: 4px;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #d7ccc8;
+        }
+
+        /* Sección Principal */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Sección Misión, Visión y Objetivos */
+        .mission-vision {
+            background-color: #fff;
+            text-align: center;
+        }
+
+        .mission-vision h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .mv-item {
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            background-color: #f9f5f0;
+        }
+
+        .mv-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .mv-item i {
+            font-size: 35px;
+            color: #8d6e63;
+            margin-bottom: 15px;
+        }
+
+        .mv-item h3 {
+            font-size: 20px;
+        }
+
+        /* Sección Lema y Valores */
+        .values {
+            background-color: #f9f5f0;
+            text-align: center;
+        }
+
+        .values h2 {
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .value-item {
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            background-color: white;
+        }
+
+        .value-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-item i {
+            font-size: 35px;
+            color: #8d6e63;
+            margin-bottom: 15px;
+        }
+
+        .value-item h3 {
+            font-size: 20px;
+        }
+
+        /* Productos Destacados */
+        .products {
+            background-color: white;
+        }
+
+        .products h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background-color: #f9f5f0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-content h3 {
+            font-size: 20px;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #8d6e63;
+            margin: 10px 0;
+        }
+
+        /* Proceso de Producción */
+        .process {
+            background-color: #f9f5f0;
+        }
+
+        .process h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .process-step {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: #8d6e63;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Testimonios */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonials h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background-color: #f9f5f0;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Información Adicional */
+        .info {
+            background-color: #f9f5f0;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .info-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .info-item ul {
+            list-style: none;
+        }
+
+        .info-item ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-item ul li:before {
+            content: "•";
+            color: #8d6e63;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #5d4037;
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer-column p,
+        .footer-column a {
+            color: #d7ccc8;
+            margin-bottom: 8px;
+            display: block;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: #8d6e63;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: #d7ccc8;
+        }
+
+        /* ========== ESTILOS RESPONSIVE ========== */
+
+        /* Tablets */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+        }
+
+        /* Móviles grandes */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+
+            .logo img {
+                height: 35px;
+            }
+
+            .logo h1 {
+                font-size: 18px;
+            }
+
+            .menu-toggle {
+                display: flex;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+
+            nav {
+                width: 100%;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                margin-top: 15px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 70px 0;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .mv-grid,
+            .values-grid,
+            .products-grid,
+            .testimonials-grid,
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* Móviles pequeños */
+        @media (max-width: 480px) {
+            .container {
+                width: 95%;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            section {
+                padding: 40px 0;
+            }
+
+            h2 {
+                font-size: 24px !important;
+            }
+
+            .mv-item,
+            .value-item,
+            .testimonial-card {
+                padding: 20px;
+            }
+
+            .product-content {
+                padding: 15px;
+            }
+
+            .btn {
+                padding: 10px 20px;
+                width: 100%;
+                display: block;
+            }
+
+            .footer-column {
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Móviles muy pequeños */
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .logo h1 {
+                font-size: 16px;
+            }
+
+            .logo img {
+                height: 30px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <!-- AQUÍ PUEDES REEMPLAZAR EL LOGO POR EL DE TU EMPRESA -->
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDE2IDI1NmMwLTUzLjAyLTQyLjk4LTk2LTk2LTk2cy05NiA0Mi45OC05NiA5NiA0Mi45OCA5NiA5NiA5NiA5Ni00Mi45OCA5Ni05NnptLTI1NiAwYzAtNTMuMDItNDIuOTgtOTYtOTYtOTZzLTk2IDQyLjk4LTk2IDk2IDQyLjk4IDk2IDk2IDk2IDk2LTQyLjk4IDk2LTk2em0zMjggMTYwYzM1LjM1IDAgNjQtMjguNjUgNjQtNjRzLTI4LjY1LTY0LTY0LTY0LTY0IDI4LjY1LTY0IDY0IDI4LjY1IDY0IDY0IDY0em0tNDQ4IDBjMzUuMzUgMCA2NC0yOC42NSA2NC02NHMtMjguNjUtNjQtNjQtNjQtNjQgMjguNjUtNjQgNjQgMjguNjUgNjQgNjQgNjR6Ii8+PC9zdmc+"
+                        alt="Logo Café Artesanal">
+                    <h1>Café Artesanal</h1>
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#mision-vision">Misión y Visión</a></li>
+                        <li><a href="#valores">Valores</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#proceso">Proceso</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Principal -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>El mejor café, directamente a tu hogar</h1>
+            <p>Descubre nuestra selección de cafés premium, cultivados con pasión y tostados artesanalmente para
+                ofrecerte la mejor experiencia en cada taza.</p>
+            <a href="#productos" class="btn">Ver Productos</a>
+        </div>
+    </section>
+
+    <!-- Sección Misión, Visión y Objetivos -->
+    <section class="mission-vision" id="mision-vision">
+        <div class="container">
+            <h2>Nuestra Identidad</h2>
+            <div class="mv-grid">
+                <div class="mv-item">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Misión</h3>
+                    <p>Ofrecer a nuestros clientes la mejor experiencia de café, seleccionando y tostando granos de la
+                        más alta calidad, mientras promovemos prácticas sostenibles y apoyamos a las comunidades
+                        cafetaleras.</p>
+                </div>
+                <div class="mv-item">
+                    <i class="fas fa-eye"></i>
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos como la marca líder en café artesanal de especialidad, expandiendo nuestra
+                        presencia a nivel nacional mientras mantenemos nuestro compromiso con la calidad, la
+                        sostenibilidad y la innovación.</p>
+                </div>
+                <div class="mv-item">
+                    <i class="fas fa-flag-checkered"></i>
+                    <h3>Objetivos</h3>
+                    <p>1. Expandir nuestra red de productores locales en un 30% para 2025.<br>
+                        2. Implementar envases 100% biodegradables en todos nuestros productos.<br>
+                        3. Llegar a 10 nuevas ciudades en los próximos 2 años.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Lema y Valores -->
+    <section class="values" id="valores">
+        <div class="container">
+            <h2>Nuestros Valores</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <i class="fas fa-seedling"></i>
+                    <h3>Sostenibilidad</h3>
+                    <p>Trabajamos directamente con agricultores locales que practican una agricultura sostenible y
+                        respetuosa con el medio ambiente.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-award"></i>
+                    <h3>Calidad Premium</h3>
+                    <p>Seleccionamos solo los mejores granos de café, garantizando un sabor excepcional en cada una de
+                        nuestras variedades.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-heart"></i>
+                    <h3>Pasión por el Café</h3>
+                    <p>Nuestro equipo está formado por apasionados del café que buscan compartir las mejores
+                        experiencias con nuestros clientes.</p>
+                </div>
+                <div class="value-item">
+                    <i class="fas fa-recycle"></i>
+                    <h3>Responsabilidad</h3>
+                    <p>Utilizamos envases reciclables y promovemos prácticas comerciales éticas en toda nuestra cadena
+                        de suministro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section class="products" id="productos">
+        <div class="container">
+            <h2>Nuestros Cafés Destacados</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1587734195503-904fca47e0e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                    </div>
+                    <div class="product-content">
+                        <h3>Café Arábica Premium</h3>
+                        <p>Granos 100% Arábica, con notas de chocolate y avellana. Un café suave y aromático perfecto
+                            para cualquier momento del día.</p>
+                        <div class="product-price">$12.900</div>
+                        <a href="#" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1568649929103-28ffbefaca1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                    </div>
+                    <div class="product-content">
+                        <h3>Blend Especial de la Casa</h3>
+                        <p>Nuestra mezcla exclusiva con granos de Colombia y Brasil. Equilibrio perfecto entre acidez y
+                            cuerpo con final persistente.</p>
+                        <div class="product-price">$14.500</div>
+                        <a href="#" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                    </div>
+                    <div class="product-content">
+                        <h3>Café Orgánico</h3>
+                        <p>Cultivado sin pesticidas ni productos químicos. Notas frutales y cítricas con un perfil de
+                            sabor limpio y natural.</p>
+                        <div class="product-price">$16.200</div>
+                        <a href="#" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso de Producción -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <h2>Nuestro Proceso Artesanal</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Selección del Grano</h3>
+                    <p>Seleccionamos manualmente solo los granos más maduros y de mejor calidad de cada cosecha.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Tostado</h3>
+                    <p>Tostamos en pequeños lotes para garantizar un perfil de sabor consistente y desarrollar todo el
+                        potencial aromático.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Envasado</h3>
+                    <p>Utilizamos envases con válvula de degasificación que preservan la frescura y aromas del café
+                        recién tostado.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Entrega</h3>
+                    <p>Enviamos tu pedido en 24-48 horas para que disfrutes del café en su punto óptimo de frescura.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "El mejor café que he probado en mi vida. Desde que descubrí Café Artesanal, no puedo empezar mi
+                        día sin una taza de su Blend Especial."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <h4>María González</h4>
+                            <p>Cliente desde 2021</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "La calidad es excepcional y el servicio al cliente increíble. Siempre llega fresco y con ese
+                        aroma que llena toda la casa."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Cliente desde 2020</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Como barista profesional, valoro mucho la consistencia y calidad del grano. Café Artesanal
+                        nunca me decepciona, es mi proveedor de confianza."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <h4>Ana Martínez</h4>
+                            <p>Propietaria de cafetería</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Adicional -->
+    <section class="info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-item">
+                    <h3>Horario de Atención</h3>
+                    <ul>
+                        <li>Lunes a Viernes: 8:00 - 20:00</li>
+                        <li>Sábados: 9:00 - 18:00</li>
+                        <li>Domingos: 10:00 - 14:00</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h3>Métodos de Pago</h3>
+                    <ul>
+                        <li>Tarjetas de crédito y débito</li>
+                        <li>Transferencia bancaria</li>
+                        <li>PayPal</li>
+                        <li>Pago contra entrega</li>
+                    </ul>
+                </div>
+                <div class="info-item">
+                    <h3>Políticas de Envío</h3>
+                    <ul>
+                        <li>Envío gratuito en compras superiores a $30.000</li>
+                        <li>Entrega en 24-48 horas en área metropolitana</li>
+                        <li>Envío nacional en 3-5 días hábiles</li>
+                        <li>Política de devolución en 15 días</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Calle del Café 123, Ciudad</p>
+                    <p><i class="fas fa-phone"></i> +57 1 234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@cafeartesanal.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <a href="#inicio">Inicio</a>
+                    <a href="#mision-vision">Misión y Visión</a>
+                    <a href="#valores">Valores</a>
+                    <a href="#productos">Productos</a>
+                    <a href="#proceso">Proceso</a>
+                    <a href="#testimonios">Testimonios</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Suscríbete a nuestro Newsletter</h3>
+                    <p>Recibe ofertas exclusivas y descubre nuevos productos antes que nadie.</p>
+                    <form>
+                        <input type="email" placeholder="Tu correo electrónico"
+                            style="padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 5px; border: none;">
+                        <button type="submit" class="btn" style="width: 100%;">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Café Artesanal. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menú móvil toggle
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+
+            menuToggle.addEventListener('click', function () {
+                mainNav.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer clic en un enlace (en móviles)
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            console.log("Para agregar tu logo:");
+            console.log("1. Reemplaza la URL en el atributo 'src' de la etiqueta <img> dentro de la clase 'logo'");
+            console.log("2. El logo debe tener aproximadamente 40px de altura para mantener la proporción");
+        });
+    </script>
+</body>
+
+</html>
