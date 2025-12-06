@@ -297,6 +297,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
+            margin-bottom: 40px;
         }
 
         .process-step {
@@ -316,6 +317,17 @@
             margin: 0 auto 15px;
             font-size: 20px;
             font-weight: bold;
+        }
+
+        .process-image {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .process-image img {
+            max-width: 50%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Testimonios */
@@ -359,6 +371,73 @@
             background-color: #ddd;
             margin-right: 15px;
             flex-shrink: 0;
+        }
+
+        .testimonial-year {
+            color: #8d6e63;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        /* Organigrama */
+        .org-chart {
+            background-color: white;
+            padding: 60px 0;
+        }
+
+        .org-chart h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .org-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .org-image-container {
+            text-align: center;
+        }
+
+        .org-image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        /* Proveedores */
+        .suppliers {
+            background-color: #f9f5f0;
+            padding: 60px 0;
+        }
+
+        .suppliers h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 40px;
+        }
+
+        .suppliers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .supplier-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .supplier-card h3 {
+            color: #8d6e63;
+            margin-bottom: 15px;
         }
 
         /* Información Adicional */
@@ -540,7 +619,9 @@
             .values-grid,
             .products-grid,
             .testimonials-grid,
-            .info-grid {
+            .info-grid,
+            .org-images,
+            .suppliers-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -586,7 +667,8 @@
 
             .mv-item,
             .value-item,
-            .testimonial-card {
+            .testimonial-card,
+            .supplier-card {
                 padding: 20px;
             }
 
@@ -633,9 +715,7 @@
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <!-- AQUÍ PUEDES REEMPLAZAR EL LOGO POR EL DE TU EMPRESA -->
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNDE2IDI1NmMwLTUzLjAyLTQyLjk4LTk2LTk2LTk2cy05NiA0Mi45OC05NiA5NiA0Mi45OCA5NiA5NiA5NiA5Ni00Mi45OCA5Ni05NnptLTI1NiAwYzAtNTMuMDItNDIuOTgtOTYtOTYtOTZzLTk2IDQyLjk4LTk2IDk2IDQyLjk4IDk2IDk2IDk2IDk2LTQyLjk4IDk2LTk2em0zMjggMTYwYzM1LjM1IDAgNjQtMjguNjUgNjQtNjRzLTI4LjY1LTY0LTY0LTY0LTY0IDI4LjY1LTY0IDY0IDI4LjY1IDY0IDY0IDY0em0tNDQ4IDBjMzUuMzUgMCA2NC0yOC42NSA2NC02NHMtMjguNjUtNjQtNjQtNjQtNjQgMjguNjUtNjQgNjQgMjguNjUgNjQgNjQgNjR6Ii8+PC9zdmc+"
-                        alt="Logo Café Artesanal">
+                    <img src="logop.jpeg" alt="Logo Café Artesanal">
                     <h1>Café Artesanal</h1>
                 </div>
                 <div class="menu-toggle" id="menuToggle">
@@ -650,6 +730,8 @@
                         <li><a href="#valores">Valores</a></li>
                         <li><a href="#productos">Productos</a></li>
                         <li><a href="#proceso">Proceso</a></li>
+                        <li><a href="#organigrama">Organigrama</a></li>
+                        <li><a href="#proveedores">Proveedores</a></li>
                         <li><a href="#testimonios">Testimonios</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
@@ -744,7 +826,7 @@
                         <h3>Café Arábica Premium</h3>
                         <p>Granos 100% Arábica, con notas de chocolate y avellana. Un café suave y aromático perfecto
                             para cualquier momento del día.</p>
-                        <div class="product-price">$12.900</div>
+                        <div class="product-price">$20</div>
                         <a href="#" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
@@ -756,7 +838,7 @@
                         <h3>Blend Especial de la Casa</h3>
                         <p>Nuestra mezcla exclusiva con granos de Colombia y Brasil. Equilibrio perfecto entre acidez y
                             cuerpo con final persistente.</p>
-                        <div class="product-price">$14.500</div>
+                        <div class="product-price">$15</div>
                         <a href="#" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
@@ -768,7 +850,19 @@
                         <h3>Café Orgánico</h3>
                         <p>Cultivado sin pesticidas ni productos químicos. Notas frutales y cítricas con un perfil de
                             sabor limpio y natural.</p>
-                        <div class="product-price">$16.200</div>
+                        <div class="product-price">$12.5</div>
+                        <a href="#" class="btn">Comprar Ahora</a>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img"
+                        style="background-image: url('https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');">
+                    </div>
+                    <div class="product-content">
+                        <h3>Café Colombia 27</h3>
+                        <p>Café especial cultivado a 1.800 metros sobre el nivel del mar en Colombia. Notas de caramelo,
+                            frutos rojos y cacao con acidez brillante.</p>
+                        <div class="product-price">$18</div>
                         <a href="#" class="btn">Comprar Ahora</a>
                     </div>
                 </div>
@@ -804,6 +898,44 @@
                     <p>Enviamos tu pedido en 24-48 horas para que disfrutes del café en su punto óptimo de frescura.</p>
                 </div>
             </div>
+            <div class="process-image">
+                <img src="proceso.jpeg" alt="Proceso de producción de café">
+                <p><em>Imagen de nuestro proceso de producción artesanal</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organigrama -->
+    <section class="org-chart" id="organigrama">
+        <div class="container">
+            <h2>Nuestra Estructura Organizacional</h2>
+            <div class="org-images">
+                <div class="org-image-container">
+                    <img src="organigrama1.jpeg" alt="Organigrama - Estructura de la empresa">
+                    <p><em></em></p>
+                </div>
+                <div class="org-image-container">
+                    <img src="organigrama2.jpeg" alt="Organigrama - Equipo de producción">
+                    <p><em>Organigrama General</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proveedores -->
+    <section class="suppliers" id="proveedores">
+        <div class="container">
+            <h2>Nuestros Proveedores</h2>
+            <div class="suppliers-grid">
+                <div class="supplier-card">
+                    <h3>Finca Café del Valle</h3>
+                    <p><strong>Nombre:</strong> Alfredo</p>
+                    <p><strong>Apellido:</strong> Torres</p>
+                    <p><strong>Tiempo de colaboración:</strong> 5 años</p>
+                    <p><strong>Certificaciones:</strong> Orgánico, Comercio Justo</p>
+                    <p>Nuestro principal proveedor general de granos de café.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -822,6 +954,7 @@
                         <div>
                             <h4>María González</h4>
                             <p>Cliente desde 2021</p>
+                            <div class="testimonial-year">Reseña 2025</div>
                         </div>
                     </div>
                 </div>
@@ -835,6 +968,7 @@
                         <div>
                             <h4>Carlos Rodríguez</h4>
                             <p>Cliente desde 2020</p>
+                            <div class="testimonial-year">Reseña 2025</div>
                         </div>
                     </div>
                 </div>
@@ -848,6 +982,7 @@
                         <div>
                             <h4>Ana Martínez</h4>
                             <p>Propietaria de cafetería</p>
+                            <div class="testimonial-year">Reseña 2025</div>
                         </div>
                     </div>
                 </div>
@@ -870,10 +1005,10 @@
                 <div class="info-item">
                     <h3>Métodos de Pago</h3>
                     <ul>
-                        <li>Tarjetas de crédito y débito</li>
-                        <li>Transferencia bancaria</li>
-                        <li>PayPal</li>
-                        <li>Pago contra entrega</li>
+                        <li>Pago Móvil</li>
+                        <li>Zelle</li>
+                        <li>Tarjetas de crédito/débito</li>
+                        <li>Efectivo</li>
                     </ul>
                 </div>
                 <div class="info-item">
@@ -895,14 +1030,16 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>Contacto</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Calle del Café 123, Ciudad</p>
-                    <p><i class="fas fa-phone"></i> +57 1 234 5678</p>
-                    <p><i class="fas fa-envelope"></i> info@cafeartesanal.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> José María Rivero calle 1</p>
+                    <p><i class="fas fa-phone"></i> 04245147763</p>
+                    <p><i class="fas fa-envelope"></i> elcafedetuvida@gmail.com</p>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61584736319424"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/cafe.conalma7?igsh=MzlwcjJwZG9pNTU2"><i
+                                class="fab fa-instagram"></i></a>
+                        <!-- <a href="#"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://wa.me/qr/HREUOKLF5ADRK1"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -912,6 +1049,8 @@
                     <a href="#valores">Valores</a>
                     <a href="#productos">Productos</a>
                     <a href="#proceso">Proceso</a>
+                    <a href="#organigrama">Organigrama</a>
+                    <a href="#proveedores">Proveedores</a>
                     <a href="#testimonios">Testimonios</a>
                 </div>
                 <div class="footer-column">
@@ -925,7 +1064,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 Café Artesanal. Todos los derechos reservados.</p>
+                <p>&copy; 2025 Café Artesanal. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
